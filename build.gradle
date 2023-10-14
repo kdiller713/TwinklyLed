@@ -1,0 +1,50 @@
+
+plugins {
+    id "java"
+}
+
+group "twinkly-led"
+version = "0.1"
+
+ext {
+    mainApplicationClass = "com.kdiller.led.Application"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {}
+
+sourceSets {
+    app {
+        java {
+            srcDir 'src/main'
+            srcDir 'src/app'
+        }
+    }
+}
+
+task runApp(type: JavaExec) {
+    group 'application'
+
+    mainClass = "$mainApplicationClass"
+    classpath = sourceSets.app.runtimeClasspath
+}
+
+task jarApp(type: Jar){
+    archivesBaseName = 'TwinklyApp'
+    from sourceSets.app.output
+    
+    manifest {
+        attributes "Main-Class": "$mainApplicationClass"
+    }
+}
+
+// Useful task to see what is being used
+task copyDependencies(type: Copy) {
+    description 'Copies Gradle libs into build directory for external use (e.g. by non-Gradle projects).'
+    group 'build'
+    from configurations.runtimeClasspath
+    into new File(buildDir, "gradle-dependencies")
+}
