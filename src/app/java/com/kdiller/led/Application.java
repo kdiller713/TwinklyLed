@@ -33,7 +33,7 @@ public class Application {
             System.out.println("Mode: " + wirelessLedController.getMode());
         }
         
-        Pattern pattern = new TripleRacerPattern(multi, 10, 5);
+        Pattern pattern = new TripleGradientPattern(multi);
         
         while(true){
             pattern.update();

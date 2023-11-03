@@ -66,22 +66,27 @@ public class HttpWirelessLedController implements IWirelessLedController {
     }
 
     // LED Strand Details
+    @Override
     public String getDeviceName() {
         return getFullInfo().get("device_name");
     }
     
+    @Override
     public String getProductCode() {
         return getFullInfo().get("product_code");
     }
     
+    @Override
     public String getUUID() {
         return getFullInfo().get("uuid");
     }
     
+    @Override
     public String getHardwareID() {
         return getFullInfo().get("hw_id");
     }
     
+    @Override
     public LedMode getMode() {
         Map<String, String> retValue = null;
         
@@ -103,6 +108,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         return mode;
     }
     
+    @Override
     public int numberOfLeds() {
         try{
             return Integer.parseInt(getFullInfo().get("number_of_led"));
@@ -111,6 +117,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         }
     }
     
+    @Override
     public Map<String, String> getFullInfo() {
         Map<String, String> retValue = null;
         
@@ -130,6 +137,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
     }
     
     // LED Operations
+    @Override
     public void setMode(LedMode mode) {
         Map<String, String> retValue = null;
         String data = "{\"mode\":\"" + mode.getModeStr() + "\"}";
@@ -145,6 +153,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         }
     }
     
+    @Override
     public void updateFrame(Color[] frame) {
         if(mode != LedMode.REAL_TIME){
             setMode(LedMode.REAL_TIME);
@@ -176,6 +185,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         }
     }
     
+    @Override
     public void setColor(Color color) {
         if(mode != LedMode.COLOR){
             setMode(LedMode.COLOR);
@@ -200,6 +210,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         }
     }
     
+    @Override
     public void turnOff() {
         setMode(LedMode.OFF);
         mode = getMode();

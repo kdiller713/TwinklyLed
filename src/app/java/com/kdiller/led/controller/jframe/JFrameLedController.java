@@ -52,5 +52,4 @@ public abstract class JFrameLedController implements ILedController {
     public void setMode(LedMode mode) {
         this.mode = mode;
     }
-    
 }

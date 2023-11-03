@@ -15,6 +15,10 @@ public class MultiLedController implements ILedController {
         ledControllers.add(controller);
     }
     
+    public int numberOfControllers(){
+        return ledControllers.size();
+    }
+    
     @Override
     public LedMode getMode() {
         LedMode mode = null;

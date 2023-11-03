@@ -20,6 +20,7 @@ public class CachingWirelessLedController implements IWirelessLedController {
     }
 
     // LED Strand Details
+    @Override
     public String getDeviceName() {
         if(cachedDeviceName == null){
             cachedDeviceName = wirelessController.getDeviceName();
@@ -28,6 +29,7 @@ public class CachingWirelessLedController implements IWirelessLedController {
         return cachedDeviceName;
     }
     
+    @Override
     public String getProductCode() {
         if(cachedProductCode == null){
             cachedProductCode = wirelessController.getProductCode();
@@ -36,6 +38,7 @@ public class CachingWirelessLedController implements IWirelessLedController {
         return cachedProductCode;
     }
     
+    @Override
     public String getUUID() {
         if(cachedUUID == null){
             cachedUUID = wirelessController.getUUID();
@@ -44,6 +47,7 @@ public class CachingWirelessLedController implements IWirelessLedController {
         return cachedUUID;
     }
     
+    @Override
     public String getHardwareID() {
         if(cachedHardwareID == null){
             cachedHardwareID = wirelessController.getHardwareID();
@@ -52,11 +56,13 @@ public class CachingWirelessLedController implements IWirelessLedController {
         return cachedHardwareID;
     }
     
+    @Override
     public Map<String, String> getFullInfo() {
         // This is not cached
         return wirelessController.getFullInfo();
     }
     
+    @Override
     public LedMode getMode() {
         if(cachedLedMode == null){
             cachedLedMode = wirelessController.getMode();
@@ -65,6 +71,7 @@ public class CachingWirelessLedController implements IWirelessLedController {
         return cachedLedMode;
     }
     
+    @Override
     public int numberOfLeds() {
         if(cachedLedCount == -1){
             cachedLedCount = wirelessController.numberOfLeds();
@@ -74,19 +81,23 @@ public class CachingWirelessLedController implements IWirelessLedController {
     }
     
     // LED Operations
+    @Override
     public void setMode(LedMode mode) {
         cachedLedMode = null;
         wirelessController.setMode(mode);
     }
     
+    @Override
     public void updateFrame(Color[] frame) {
         wirelessController.updateFrame(frame);
     }
     
+    @Override
     public void setColor(Color color) {
         wirelessController.setColor(color);
     }
     
+    @Override
     public void turnOff() {
         wirelessController.turnOff();
     }

@@ -33,7 +33,7 @@ task runApp(type: JavaExec) {
 }
 
 task jarApp(type: Jar){
-    archivesBaseName = 'TwinklyApp'
+    archiveBaseName = 'TwinklyApp'
     from sourceSets.app.output
     
     manifest {
