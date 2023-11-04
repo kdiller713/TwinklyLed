@@ -52,6 +52,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
             
             Map<String, Object> verifyProps = new HashMap<String, Object>();
             retValue = performAction("verify", POST_ACTION, JSON_CONTENT_TYPE, ("{\"challenge-response\":\"" + retValue.get("challenge-response") + "\"}").getBytes());
+            System.out.println(retValue);
             
             if(retValue == null) {
                 authToken = null;
@@ -225,6 +226,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
         try{
             URL obj = new URL("http://" + ipAddress + "/xled/v1/" + url);
             URLConnection urlCon = obj.openConnection();
+            urlCon.setConnectTimeout(1000);
             
             if (!(urlCon instanceof HttpURLConnection)) {
                 throw new RuntimeException("Failed to create a HTTP Connection");
@@ -272,7 +274,7 @@ public class HttpWirelessLedController implements IWirelessLedController {
                 return null;
             }
         }catch(Exception e){
-            throw new RuntimeException("Dev Screwed Up", e);
+            throw new RuntimeException("Error occurred while performing action", e);
         }
     }
     
