@@ -52,7 +52,6 @@ public class HttpWirelessLedController implements IWirelessLedController {
             
             Map<String, Object> verifyProps = new HashMap<String, Object>();
             retValue = performAction("verify", POST_ACTION, JSON_CONTENT_TYPE, ("{\"challenge-response\":\"" + retValue.get("challenge-response") + "\"}").getBytes());
-            System.out.println(retValue);
             
             if(retValue == null) {
                 authToken = null;
